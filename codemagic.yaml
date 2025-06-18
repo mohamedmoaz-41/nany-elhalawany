@@ -2,12 +2,14 @@ workflows:
   build_ios:
     name: Build iOS IPA
     environment:
-      flutter: stable
+      flutter: 3.19.6 # بدل "stable"
       xcode: latest
       cocoapods: default
     scripts:
-      - name: Install dependencies
-        script: flutter pub get
+      - name: Clean & get packages
+        script: |
+          flutter clean
+          flutter pub get
 
       - name: Build IPA
         script: flutter build ipa --release
